@@ -7,4 +7,8 @@
             #{item}
         </foreach>
     </delete>
+
+    <select id="listMappingId" resultType="java.lang.Long">
+        select mapping_id from t_role_mapping where role_id =#{roleId}
+    </select>
 </mapper>

@@ -4,6 +4,8 @@ import cn.bucheng.model.domain.RoleMappingPO;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @ClassName RoleMappingMapper
  * @Author buchengyin
@@ -11,4 +13,5 @@ import org.apache.ibatis.annotations.Param;
  **/
 public interface RoleMappingMapper extends BaseMapper<RoleMappingPO> {
     void deleteMappingAndRole(@Param("roleId")Long roleId,@Param("mappingIds")Long[] mappingIds );
+    List<Long> listMappingId(@Param("roleId")Long roleId);
 }

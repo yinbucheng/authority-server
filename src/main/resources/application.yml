@@ -1,4 +1,7 @@
 spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     schema: classpath:db/schema-h2.sql
@@ -7,7 +10,6 @@ spring:
     username: root
     password: introcks1234
     initialization-mode: never
-
 
 # Logger Config
 logging:

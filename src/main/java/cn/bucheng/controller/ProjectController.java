@@ -62,4 +62,5 @@ public class ProjectController {
         List<ProjectEntity> projectEntities = projectService.selectList(wrapper);
         return ServerResult.success(projectEntities);
     }
+
 }

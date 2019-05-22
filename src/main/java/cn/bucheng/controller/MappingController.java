@@ -1,6 +1,7 @@
 package cn.bucheng.controller;
 
 import cn.bucheng.model.domain.MappingEntity;
+import cn.bucheng.model.dto.MappingRoleDto;
 import cn.bucheng.model.dto.PageDto;
 import cn.bucheng.model.dto.ServerResult;
 import cn.bucheng.model.vo.BaseVo;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @ClassName MappingController
@@ -35,9 +38,8 @@ public class MappingController {
     }
 
     @PostMapping("/listAll")
-    public Object listAll(@RequestBody  BaseVo vo){
-        Page<MappingEntity> page = mappingService.selectPage(new Page<>(vo.getPageNum(), vo.getPageSize()));
-        PageDto<MappingEntity> result = new PageDto<>(page.getTotal(),page.getCurrent(),page.getSize(),page.getRecords());
+    public Object listAll(Long projectId,Long roleId){
+        List<MappingRoleDto> result = mappingService.listMapping(projectId,roleId);
         return ServerResult.success(result);
     }
 }
