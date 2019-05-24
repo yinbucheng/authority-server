@@ -1,23 +1,23 @@
-package cn.bucheng.model.domain;
+package cn.bucheng.model.po;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @ClassName ProjectMappingPO
+ * @ClassName UserRolePO
  * @Author buchengyin
- * @Date 2019/5/20 15:33
+ * @Date 2019/5/20 15:30
  **/
-@Deprecated
-@TableName("t_project_mapping")
-public class ProjectMappingPO {
-    @TableId(type = IdType.AUTO)
+@TableName("t_user_role")
+public class UserRolePO implements Serializable {
+    @TableId(type= IdType.AUTO)
     private Long id;
-    private Long projectId;
-    private Long mappingId;
+    private Long userId;
+    private Long roleId;
     private Date createTime;
     private Date deleteTime;
 
@@ -29,20 +29,20 @@ public class ProjectMappingPO {
         this.id = id;
     }
 
-    public Long getProjectId() {
-        return projectId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public Long getMappingId() {
-        return mappingId;
+    public Long getRoleId() {
+        return roleId;
     }
 
-    public void setMappingId(Long mappingId) {
-        this.mappingId = mappingId;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
     public Date getCreateTime() {

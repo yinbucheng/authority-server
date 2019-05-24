@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @ClassName MappingRoleDto
+ * @ClassName MappingRoleDTO
  * @Author buchengyin
  * @Date 2019/5/21 13:46
  **/
-public class MappingRoleDto implements Serializable {
+public class MappingRoleDTO implements Serializable {
     private Long mappingId;
     private String name;
     private Boolean check;

@@ -2,11 +2,11 @@ package cn.bucheng.service.impl;
 
 import cn.bucheng.dao.UserMapper;
 import cn.bucheng.dao.UserRoleMapper;
-import cn.bucheng.model.domain.UserEntity;
-import cn.bucheng.model.domain.UserRolePO;
-import cn.bucheng.model.dto.UserMappingDto;
-import cn.bucheng.model.vo.UserRoleVo;
-import cn.bucheng.model.vo.UserVo;
+import cn.bucheng.model.po.UserEntity;
+import cn.bucheng.model.po.UserRolePO;
+import cn.bucheng.model.dto.UserMappingDTO;
+import cn.bucheng.model.vo.UserRoleVO;
+import cn.bucheng.model.vo.UserVO;
 import cn.bucheng.service.UserService;
 import com.baomidou.mybatisplus.mapper.Condition;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -30,7 +30,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,UserEntity> implemen
     private UserRoleMapper userRoleMapper;
 
     @Override
-    public void saveUser(UserVo userVo) throws Exception {
+    @Transactional
+    public void saveUser(UserVO userVo) throws Exception {
         Wrapper<UserEntity> wrapper = new Condition().eq("name",userVo.getName());
         List<UserEntity> userEntities = baseMapper.selectList(wrapper);
         if(userEntities!=null&&userEntities.size()>0){
@@ -42,11 +43,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,UserEntity> implemen
         entity.setCreateTime(new Date());
         entity.setPassword(userVo.getPassword());
         baseMapper.insert(entity);
+        throw new RuntimeException("test2");
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW,isolation = Isolation.READ_COMMITTED)
-    public void addRole(UserRoleVo vo) throws Exception {
+    public void addRole(UserRoleVO vo) throws Exception {
         for(Long roleId:vo.getRoleIds()){
             //校验是否未曾赋值角色过
             Wrapper<UserRolePO> wrapper = new Condition().eq("role_id",roleId).and().eq("user_id",vo.getUserId());
@@ -63,25 +65,25 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,UserEntity> implemen
     }
 
     @Override
-    public Set<UserMappingDto> listUserMapping(String userName, String password) {
-        List<UserMappingDto> records = baseMapper.listUserMapping(userName, password);
+    public Set<UserMappingDTO> listUserMapping(String userName, String password) {
+        List<UserMappingDTO> records = baseMapper.listUserMapping(userName, password);
         if(records==null||records.size()==0){
             return null;
         }
-        Set<UserMappingDto> result = new TreeSet<>(new Comparator<UserMappingDto>() {
+        Set<UserMappingDTO> result = new TreeSet<>(new Comparator<UserMappingDTO>() {
             @Override
-            public int compare(UserMappingDto o1, UserMappingDto o2) {
+            public int compare(UserMappingDTO o1, UserMappingDTO o2) {
                 return o1.toString().compareTo(o2.toString());
             }
         });
-        for(UserMappingDto dto:records){
+        for(UserMappingDTO dto:records){
             result.add(dto);
         }
         return result;
     }
 
     @Override
-    public void revokeRole(UserRoleVo vo) throws Exception {
+    public void revokeRole(UserRoleVO vo) throws Exception {
         userRoleMapper.deleteUserAndRole(vo.getUserId(),vo.getRoleIds());
     }
 

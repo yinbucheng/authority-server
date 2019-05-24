@@ -3,11 +3,11 @@ package cn.bucheng.model.dto;
 import java.io.Serializable;
 
 /**
- * @ClassName RoleMappingDto
+ * @ClassName RoleMappingDTO
  * @Author buchengyin
  * @Date 2019/5/21 9:16
  **/
-public class RoleMappingDto implements Serializable {
+public class RoleMappingDTO implements Serializable {
     //项目名称
     private String projectName;
     //模块名称

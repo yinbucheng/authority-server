@@ -3,11 +3,11 @@ package cn.bucheng.model.vo;
 import java.io.Serializable;
 
 /**
- * @ClassName UserVo
+ * @ClassName UserVO
  * @Author buchengyin
  * @Date 2019/5/20 16:17
  **/
-public class UserVo implements Serializable {
+public class UserVO implements Serializable {
     private String name;
     private String gander;
     private String nickName;

@@ -1,6 +1,6 @@
 package cn.bucheng.dao;
 
-import cn.bucheng.model.domain.RoleEntity;
+import cn.bucheng.model.po.RoleEntity;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

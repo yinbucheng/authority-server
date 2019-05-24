@@ -3,11 +3,11 @@ package cn.bucheng.model.vo;
 import java.io.Serializable;
 
 /**
- * @ClassName MappingVo
+ * @ClassName MappingVO
  * @Author buchengyin
  * @Date 2019/5/20 17:00
  **/
-public class MappingVo implements Serializable {
+public class MappingVO implements Serializable {
     private String name;
     private Long projectId;
     private String url;

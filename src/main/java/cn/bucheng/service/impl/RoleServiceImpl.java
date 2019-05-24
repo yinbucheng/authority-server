@@ -3,11 +3,10 @@ package cn.bucheng.service.impl;
 import cn.bucheng.dao.ProjectMapper;
 import cn.bucheng.dao.RoleMapper;
 import cn.bucheng.dao.RoleMappingMapper;
-import cn.bucheng.model.domain.ProjectEntity;
-import cn.bucheng.model.domain.RoleEntity;
-import cn.bucheng.model.domain.RoleMappingPO;
-import cn.bucheng.model.dto.RoleMappingDto;
-import cn.bucheng.model.vo.RoleMappingVo;
+import cn.bucheng.model.po.RoleEntity;
+import cn.bucheng.model.po.RoleMappingPO;
+import cn.bucheng.model.dto.RoleMappingDTO;
+import cn.bucheng.model.vo.RoleMappingVO;
 import cn.bucheng.service.RoleService;
 import com.baomidou.mybatisplus.mapper.Condition;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -49,7 +47,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, RoleEntity> impleme
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_COMMITTED)
-    public void addMappingToRole(RoleMappingVo vo) throws Exception {
+    public void addMappingToRole(RoleMappingVO vo) throws Exception {
         Wrapper<RoleMappingPO> wrapper = new Condition().eq("role_id", vo.getRoleId()).and().in("mapping_id", vo.getMappingIds());
         List<RoleMappingPO> roleMappingPOS = roleMappingMapper.selectList(wrapper);
         if (roleMappingPOS != null && roleMappingPOS.size() > 0) {
@@ -65,13 +63,13 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, RoleEntity> impleme
     }
 
     @Override
-    public List<RoleMappingDto> listRoleMapping(Long roleId) {
+    public List<RoleMappingDTO> listRoleMapping(Long roleId) {
 
         return null;
     }
 
     @Override
-    public void revokeMappingFromRole(RoleMappingVo vo) throws Exception {
+    public void revokeMappingFromRole(RoleMappingVO vo) throws Exception {
         roleMappingMapper.deleteMappingAndRole(vo.getRoleId(), vo.getMappingIds());
     }
 }

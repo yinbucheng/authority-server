@@ -3,11 +3,11 @@ package cn.bucheng.model.dto;
 import java.io.Serializable;
 
 /**
- * @ClassName UserMappingDto
+ * @ClassName UserMappingDTO
  * @Author buchengyin
  * @Date 2019/5/21 10:58
  **/
-public class UserMappingDto  implements Serializable {
+public class UserMappingDTO implements Serializable {
     private String url;
     private String webId;
     private String method;
@@ -38,7 +38,7 @@ public class UserMappingDto  implements Serializable {
 
     @Override
     public String toString() {
-        return "UserMappingDto{" +
+        return "UserMappingDTO{" +
                 "url='" + url + '\'' +
                 ", webId='" + webId + '\'' +
                 ", method='" + method + '\'' +

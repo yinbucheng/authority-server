@@ -1,7 +1,7 @@
 package cn.bucheng.service.impl;
 
 import cn.bucheng.dao.ProjectMapper;
-import cn.bucheng.model.domain.ProjectEntity;
+import cn.bucheng.model.po.ProjectEntity;
 import cn.bucheng.service.ProjectService;
 import com.baomidou.mybatisplus.mapper.Condition;
 import com.baomidou.mybatisplus.mapper.Wrapper;

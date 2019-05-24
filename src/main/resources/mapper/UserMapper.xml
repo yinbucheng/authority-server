@@ -5,7 +5,7 @@
        select * from t_user where name like #{name}
    </select>
 
-    <select id="listUserMapping" resultType="cn.bucheng.model.dto.UserMappingDto" >
+    <select id="listUserMapping" resultType="cn.bucheng.model.dto.UserMappingDTO" >
        select url,web_id as webId,method from t_user,t_user_role,t_role_mapping,t_mapping where t_user.name = #{userName} and t_user.password =#{password} and t_user.id=t_user_role.user_id and t_user_role.role_id=t_role_mapping.role_id and t_role_mapping.mapping_id = t_mapping.id
     </select>
 </mapper>

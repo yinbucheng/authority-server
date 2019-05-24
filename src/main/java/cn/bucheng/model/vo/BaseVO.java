@@ -3,11 +3,11 @@ package cn.bucheng.model.vo;
 import java.io.Serializable;
 
 /**
- * @ClassName BaseVo
+ * @ClassName BaseVO
  * @Author buchengyin
  * @Date 2019/5/20 16:28
  **/
-public class BaseVo implements Serializable {
+public class BaseVO implements Serializable {
     private Integer pageNum;
     private Integer pageSize;
 

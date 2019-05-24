@@ -1,7 +1,7 @@
 package cn.bucheng;
 
 import cn.bucheng.dao.UserMapper;
-import cn.bucheng.model.domain.UserEntity;
+import cn.bucheng.model.po.UserEntity;
 import cn.bucheng.service.UserService;
 import com.baomidou.mybatisplus.mapper.Condition;
 import com.baomidou.mybatisplus.mapper.Wrapper;

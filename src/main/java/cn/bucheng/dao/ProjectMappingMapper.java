@@ -1,6 +1,6 @@
 package cn.bucheng.dao;
 
-import cn.bucheng.model.domain.ProjectMappingPO;
+import cn.bucheng.model.po.ProjectMappingPO;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

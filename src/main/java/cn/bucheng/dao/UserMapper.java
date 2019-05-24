@@ -1,7 +1,7 @@
 package cn.bucheng.dao;
 
-import cn.bucheng.model.domain.UserEntity;
-import cn.bucheng.model.dto.UserMappingDto;
+import cn.bucheng.model.po.UserEntity;
+import cn.bucheng.model.dto.UserMappingDTO;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import org.apache.catalina.User;
@@ -18,5 +18,5 @@ public interface UserMapper extends BaseMapper<UserEntity> {
 
     List<User> listPage(Pagination page, @Param("name")String name);
 
-    List<UserMappingDto> listUserMapping(@Param("userName") String userName, @Param("password") String password);
+    List<UserMappingDTO> listUserMapping(@Param("userName") String userName, @Param("password") String password);
 }

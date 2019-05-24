@@ -2,9 +2,9 @@ package cn.bucheng.service.impl;
 
 import cn.bucheng.dao.MappingMapper;
 import cn.bucheng.dao.RoleMappingMapper;
-import cn.bucheng.model.domain.MappingEntity;
-import cn.bucheng.model.dto.MappingRoleDto;
-import cn.bucheng.model.vo.MappingVo;
+import cn.bucheng.model.po.MappingEntity;
+import cn.bucheng.model.dto.MappingRoleDTO;
+import cn.bucheng.model.vo.MappingVO;
 import cn.bucheng.service.MappingService;
 import com.baomidou.mybatisplus.mapper.Condition;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -28,7 +28,7 @@ public class MappingServiceImpl extends ServiceImpl<MappingMapper, MappingEntity
     private RoleMappingMapper roleMappingMapper;
 
     @Override
-    public void saveMapping(MappingVo vo) throws Exception {
+    public void saveMapping(MappingVO vo) throws Exception {
         Wrapper<MappingEntity> wrapper = new Condition().eq("url",vo.getUrl());
         List<MappingEntity> records = baseMapper.selectList(wrapper);
         if(records!=null&&records.size()>0){
@@ -45,15 +45,15 @@ public class MappingServiceImpl extends ServiceImpl<MappingMapper, MappingEntity
     }
 
     @Override
-    public List<MappingRoleDto> listMapping(Long projectId, Long roleId) {
+    public List<MappingRoleDTO> listMapping(Long projectId, Long roleId) {
         List<Long> mappingIds = roleMappingMapper.listMappingId(roleId);
         List<MappingEntity> datas = baseMapper.selectList(new Condition().eq("project_id",projectId));
         if(datas==null){
             return null;
         }
-        List<MappingRoleDto> result = new LinkedList<>();
+        List<MappingRoleDTO> result = new LinkedList<>();
         for(MappingEntity entity:datas){
-            MappingRoleDto dto = new MappingRoleDto();
+            MappingRoleDTO dto = new MappingRoleDTO();
             dto.setCreateTime(entity.getCreateTime());
             dto.setMappingId(entity.getId());
             dto.setUrl(entity.getUrl());

@@ -1,7 +1,7 @@
 package cn.bucheng.controller;
 
 import cn.bucheng.model.dto.ServerResult;
-import cn.bucheng.model.vo.RoleMappingVo;
+import cn.bucheng.model.vo.RoleMappingVO;
 import cn.bucheng.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +31,7 @@ public class RoleController {
     }
 
     @PostMapping("/addMapping")
-    public Object addMappingToRole(@RequestBody RoleMappingVo vo){
+    public Object addMappingToRole(@RequestBody RoleMappingVO vo){
         try {
             roleService.addMappingToRole(vo);
             return ServerResult.success();
@@ -42,7 +42,7 @@ public class RoleController {
 
 
     @PostMapping("/revokeMapping")
-    public Object revokeMappingFromRole(@RequestBody RoleMappingVo vo){
+    public Object revokeMappingFromRole(@RequestBody RoleMappingVO vo){
         try {
             roleService.revokeMappingFromRole(vo);
             return ServerResult.success();

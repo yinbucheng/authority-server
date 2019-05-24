@@ -1,9 +1,9 @@
 package cn.bucheng.controller;
 
-import cn.bucheng.model.domain.ProjectEntity;
-import cn.bucheng.model.dto.PageDto;
+import cn.bucheng.model.po.ProjectEntity;
+import cn.bucheng.model.dto.PageDTO;
 import cn.bucheng.model.dto.ServerResult;
-import cn.bucheng.model.vo.BaseVo;
+import cn.bucheng.model.vo.BaseVO;
 import cn.bucheng.service.ProjectService;
 import com.baomidou.mybatisplus.mapper.Condition;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -48,11 +48,11 @@ public class ProjectController {
     }
 
     @PostMapping("/listProject")
-    public Object listProject(@RequestBody  BaseVo vo){
+    public Object listProject(@RequestBody BaseVO vo){
         Wrapper<ProjectEntity> wrapper = new Condition().isNull("parent_id").and().isNull("delete_time");
         Page<ProjectEntity> page = new Page<>(vo.getPageNum(),vo.getPageSize());
         projectService.selectPage(page,wrapper);
-        PageDto<ProjectEntity> dto = new PageDto(page);
+        PageDTO<ProjectEntity> dto = new PageDTO(page);
         return ServerResult.success(dto);
     }
 

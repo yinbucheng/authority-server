@@ -6,24 +6,24 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @ClassName PageDto
+ * @ClassName PageDTO
  * @Author buchengyin
  * @Date 2019/5/20 16:28
  **/
-public class PageDto<T> implements Serializable {
+public class PageDTO<T> implements Serializable {
     private Integer total;
     private Integer pageNum;
     private Integer pageSize;
     private List<T> records;
 
-    public PageDto(Integer total, Integer pageNum, Integer pageSize, List<T> records) {
+    public PageDTO(Integer total, Integer pageNum, Integer pageSize, List<T> records) {
         this.total = total;
         this.pageNum = pageNum;
         this.pageSize = pageSize;
         this.records = records;
     }
 
-    public PageDto(Page<T> page){
+    public PageDTO(Page<T> page){
         this.total = page.getTotal();
         this.pageNum = page.getCurrent();
         this.pageSize = page.getSize();

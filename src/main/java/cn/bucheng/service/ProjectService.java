@@ -1,6 +1,6 @@
 package cn.bucheng.service;
 
-import cn.bucheng.model.domain.ProjectEntity;
+import cn.bucheng.model.po.ProjectEntity;
 import com.baomidou.mybatisplus.service.IService;
 
 /**

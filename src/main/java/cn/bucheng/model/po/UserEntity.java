@@ -1,4 +1,4 @@
-package cn.bucheng.model.domain;
+package cn.bucheng.model.po;
 
 
 import com.baomidou.mybatisplus.annotations.TableField;

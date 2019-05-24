@@ -1,6 +1,6 @@
 package cn.bucheng.dao;
 
-import cn.bucheng.model.domain.UserRolePO;
+import cn.bucheng.model.po.UserRolePO;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 

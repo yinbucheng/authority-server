@@ -1,13 +1,9 @@
 package cn.bucheng.controller;
 
-import cn.bucheng.model.domain.MappingEntity;
-import cn.bucheng.model.dto.MappingRoleDto;
-import cn.bucheng.model.dto.PageDto;
+import cn.bucheng.model.dto.MappingRoleDTO;
 import cn.bucheng.model.dto.ServerResult;
-import cn.bucheng.model.vo.BaseVo;
-import cn.bucheng.model.vo.MappingVo;
+import cn.bucheng.model.vo.MappingVO;
 import cn.bucheng.service.MappingService;
-import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +24,7 @@ public class MappingController {
     private MappingService mappingService;
 
     @PostMapping("/save")
-    public Object saveMapping(@RequestBody  MappingVo vo){
+    public Object saveMapping(@RequestBody MappingVO vo){
         try {
             mappingService.saveMapping(vo);
             return ServerResult.success();
@@ -39,7 +35,7 @@ public class MappingController {
 
     @PostMapping("/listAll")
     public Object listAll(Long projectId,Long roleId){
-        List<MappingRoleDto> result = mappingService.listMapping(projectId,roleId);
+        List<MappingRoleDTO> result = mappingService.listMapping(projectId,roleId);
         return ServerResult.success(result);
     }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.bucheng.dao.TableFieldValueMapper">
+   <select id="countName" resultType="int" parameterType="cn.bucheng.model.vo.FieldValueVO">
+       select count(*) from t_table_field_value where
+       <foreach collection="vos" item="item" index="index" separator="or" open="" close="">
+           ( field_id =#{item.fieldId} and name =#{item.name})
+       </foreach>
+   </select>
+
+</mapper>
