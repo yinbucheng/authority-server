@@ -17,12 +17,13 @@ public class FileTest {
         try {
             RandomAccessFile rf = new RandomAccessFile(file, "rw");
             rf.seek(0);
+            rf.setLength(1024*1024);
             byte[] datas ="hello word".getBytes();
             rf.write(datas);
 
 
             RandomAccessFile rf2 = new RandomAccessFile(file,"rw");
-            rf2.seek(datas.length);
+            rf2.seek(datas.length+20);
              datas ="i love you".getBytes();
             rf2.write(datas);
 
