@@ -6,5 +6,5 @@ import org.apache.ibatis.annotations.Param;
 
 public interface PartitionFileMapper extends BaseMapper<PartitionFileRecordPO> {
     int updateStartPosition(@Param("partitionId") long partitionId,@Param("startPosition") long startPosition);
-    int updateFinishState(@Param("partition") Long partitionId);
+    int updateFinishState(@Param("partitionId") Long partitionId);
 }

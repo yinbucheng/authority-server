@@ -15,7 +15,7 @@ import java.util.Date;
  * @Date 2019/5/24 17:19
  **/
 @Alias("PartitionFile")
-@TableName("t_partition_file")
+@TableName("t_partition_file_record")
 public class PartitionFileRecordPO implements Serializable {
     @TableId(type= IdType.AUTO)
     private Long id;

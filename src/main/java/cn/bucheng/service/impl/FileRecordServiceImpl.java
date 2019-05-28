@@ -125,7 +125,7 @@ public class FileRecordServiceImpl extends ServiceImpl<FileRecordMapper, FileRec
             baseMapper.updateFileFinishFlag(fileId);
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println(e);
+            throw  new RuntimeException(e);
         } finally {
             closeStream(randomAccessFile);
             closeStream(bis);
@@ -172,6 +172,9 @@ public class FileRecordServiceImpl extends ServiceImpl<FileRecordMapper, FileRec
         po.setFileId(fileId);
         po.setStartPosition(startPosition);
         po.setEndPosition(endPosition);
+        po.setCreateTime(new Date());
+        po.setFinishFlag(false);
+        po.setDeleteFlag(false);
         partitionFileMapper.insert(po);
         return po;
     }
@@ -182,6 +185,7 @@ public class FileRecordServiceImpl extends ServiceImpl<FileRecordMapper, FileRec
         po.setFileLength(vo.getFileLength());
         po.setTag(vo.getUuid());
         po.setFilePath(file);
+        po.setDeleteFlag(false);
         po.setFinishFlag(false);
         po.setFileName(vo.getFileName());
         baseMapper.insert(po);

@@ -2,6 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.bucheng.dao.FileRecordMapper">
   <update id="updateFileFinishFlag">
-      update t_file_record set finish_flag = true where (select count(*) from t_partition_file_record where finish_flag= false and file_id = #{file_id})=0 and id=#{fileId}
+      update t_file_record set finish_flag = true where (select count(*) from t_partition_file_record where finish_flag= false and file_id = #{fileId})=0 and id=#{fileId}
   </update>
 </mapper>
