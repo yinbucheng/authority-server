@@ -61,3 +61,31 @@ role_id bigint(20) not null,
 create_time datetime,
 delete_time datetime
 )
+
+create table if not exists t_file_record(
+id bigint primary key auto_increment,
+file_name varchar(25),
+file_path varchar(255),
+file_length bigint,
+create_time datetime,
+update_time datetime,
+delete_flag TINYINT,
+finish_flag tinyint,
+remark varchar(255),
+tag varchar(255));
+
+alter table t_file_record add index index_tag (tag);
+
+	create table if not exists t_partition_file(
+	id bigint primary key auto_increment,
+	file_id bigint not null,
+	start_position bigint,
+	end_position bigint,
+	create_time datetime,
+	update_time datetime,
+	finish_flag TINYINT,
+	delete_flag TINYINT,
+	remark varchar(255)
+	);
+
+alter table t_partition_file add index index_file_id (file_id);
