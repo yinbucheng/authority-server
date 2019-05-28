@@ -3,7 +3,7 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     schema: classpath:db/schema-h2.sql
     data: classpath:db/data-h2.sql
     url: jdbc:mysql://127.0.0.1:3306/yinchong?serverTimezone=GMT%2B8

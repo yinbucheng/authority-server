@@ -38,7 +38,7 @@ public class FileRecordServiceImpl extends ServiceImpl<FileRecordMapper, FileRec
             String filePath = "/opt/file/temp/";
             createDirIfNotExist(filePath);
             String file = filePath + System.currentTimeMillis() + "_" + vo.getFileName();
-            makEmptyFile(file,vo.getFileLength());
+            makEmptyFile(file, vo.getFileLength());
             Long fileId = saveFileRecord(vo, file);
             FileInitBO bo = createFileInitBo(fileId, false);
             if (vo.getFileLength() <= Constant.PARTITION_FILE_MAX_SIZE) {
@@ -139,12 +139,15 @@ public class FileRecordServiceImpl extends ServiceImpl<FileRecordMapper, FileRec
         }
     }
 
-    private void makEmptyFile(String file,long fileLength){
+    private void makEmptyFile(String file, long fileLength) {
+        RandomAccessFile rf = null;
         try {
-            RandomAccessFile rf = new RandomAccessFile(file, "rw");
+            rf = new RandomAccessFile(file, "rw");
             rf.setLength(fileLength);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e);
+        } finally {
+            closeStream(rf);
         }
     }
 
@@ -179,6 +182,7 @@ public class FileRecordServiceImpl extends ServiceImpl<FileRecordMapper, FileRec
         po.setFileLength(vo.getFileLength());
         po.setTag(vo.getUuid());
         po.setFilePath(file);
+        po.setFinishFlag(false);
         po.setFileName(vo.getFileName());
         baseMapper.insert(po);
         return po.getId();
