@@ -8,4 +8,8 @@
     <update id="updateFinishState">
         update t_partition_file_record set finish_flag = true where id = #{partitionId} and start_position>=end_position
     </update>
+
+    <update id="updateTime">
+        update t_partition_file_record set update_time =#{time} where id =#{partitionId}
+    </update>
 </mapper>

@@ -104,6 +104,8 @@ public class FileRecordServiceImpl extends ServiceImpl<FileRecordMapper, FileRec
         if (fileRecord == null) {
             throw new RuntimeException("未找到对应文件记录");
         }
+        baseMapper.updateTime(fileId,new Date());
+        partitionFileMapper.updateTime(partitionId,new Date());
         RandomAccessFile randomAccessFile = null;
         BufferedInputStream bis = null;
         try {
